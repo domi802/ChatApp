@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "848447696016",
+    "project_id": "mini-social-app-93a53",
+    "storage_bucket": "mini-social-app-93a53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848447696016:android:541ad40cd5d78abda4bc15",
+        "android_client_info": {
+          "package_name": "com.example.chatapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjpQomBPzB8nUQuDdw3uLPKAkKSI9GhFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
