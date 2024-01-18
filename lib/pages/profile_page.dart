@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../components/my_back_button.dart';
+
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
@@ -21,11 +23,6 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Profile"),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        elevation: 0,
-      ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
         future: getUserDetails(),
@@ -44,14 +41,55 @@ class ProfilePage extends StatelessWidget {
           else if (snapshot.hasData) {
             //extract data
             Map<String, dynamic>? user = snapshot.data!.data();
-            return Column(
-              children: [
-                Text(user!['email']),
-                Text(user['username']),
-              ],
+            return Center(
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: const EdgeInsets.only(top: 50.0, left: 25.0),
+                    child: Row(
+                      children: [
+                        MyBackButton(),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 25),
+                  //profile page
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                        borderRadius: BorderRadius.circular(24)),
+                    padding: EdgeInsets.all(25),
+                    child: const Icon(
+                      Icons.person,
+                      size: 64,
+                    ),
+                  ),
+
+                  const SizedBox(
+                    height: 25,
+                  ),
+
+                  //username
+                  Text(
+                    user!['username'],
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+
+                  const SizedBox(
+                    height: 25,
+                  ),
+
+                  //email
+                  Text(
+                    user['email'],
+                    style: TextStyle(color: Colors.grey[600]),
+                  ),
+                ],
+              ),
             );
           } else {
-            return Text("No data");
+            return const Text("No data");
           }
         }),
       ),
