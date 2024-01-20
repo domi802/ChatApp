@@ -3,6 +3,9 @@
 import 'package:chatapp/auth/auth.dart';
 import 'package:chatapp/auth/login_or_register.dart';
 import 'package:chatapp/firebase_options.dart';
+import 'package:chatapp/pages/home_page.dart';
+import 'package:chatapp/pages/profile_page.dart';
+import 'package:chatapp/pages/users_page.dart';
 import 'package:chatapp/theme/dark_mode.dart';
 import 'package:chatapp/theme/light_mode.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,6 +28,12 @@ class MyApp extends StatelessWidget {
       home: const AuthPage(),
       theme: lightMode,
       darkTheme: darkMode,
+      routes: {
+        '/login_register_page': (context) => LoginOrRegister(),
+        '/home_page': (context) => HomePage(),
+        '/profile_page': (context) => ProfilePage(),
+        '/users_page': (context) => UserPage(),
+      },
     );
   }
 }
