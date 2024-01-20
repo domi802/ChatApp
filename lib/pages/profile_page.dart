@@ -45,7 +45,7 @@ class ProfilePage extends StatelessWidget {
               child: Column(
                 children: [
                   const Padding(
-                    padding: const EdgeInsets.only(top: 50.0, left: 25.0),
+                    padding: EdgeInsets.only(top: 50.0, left: 25.0),
                     child: Row(
                       children: [
                         MyBackButton(),

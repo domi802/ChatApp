@@ -29,10 +29,10 @@ class MyApp extends StatelessWidget {
       theme: lightMode,
       darkTheme: darkMode,
       routes: {
-        '/login_register_page': (context) => const LoginOrRegister(),
-        '/home_page': (context) => const HomePage(),
+        '/login_register_page': (context) => LoginOrRegister(),
+        '/home_page': (context) => HomePage(),
         '/profile_page': (context) => ProfilePage(),
-        '/users_page': (context) => const UserPage(),
+        '/users_page': (context) => UserPage(),
       },
     );
   }
