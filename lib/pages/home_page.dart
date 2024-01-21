@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:chatapp/components/my_drawer.dart';
+import 'package:chatapp/components/my_list_tile.dart';
 import 'package:chatapp/components/my_post_button.dart';
 import 'package:chatapp/components/my_textfield.dart';
 import 'package:chatapp/database/firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -84,26 +86,24 @@ class HomePage extends StatelessWidget {
               // return as a list
               return Expanded(
                 child: ListView.builder(
+                  shrinkWrap: true,
                   itemCount: posts.length,
                   itemBuilder: (context, index) {
                     //get each individual post
                     final post = posts[index];
                     //get data from each post
-                    String message = post['message'];
+                    String message = post['PostMessage'];
                     String userEmail = post['UserEmail'];
-                    String timestamp = post['TimeStamp'];
+                    Timestamp timestamp = post['TimeStamp'];
+
+                    // format timestamp
+                    DateTime dateTime = timestamp.toDate();
+                    String formattedTimestamp =
+                        "${dateTime.day}-${dateTime.month}-${dateTime.year} • ${dateTime.hour}:${dateTime.minute}";
                     //return as list title
-                    return Padding(
-                      padding: const EdgeInsets.all(25.0),
-                      child: ListTile(
-                        title: Text(message),
-                        subtitle: Text(
-                          userEmail,
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.secondary),
-                        ),
-                      ),
-                    );
+                    return MyListTile(
+                        title: message,
+                        subtitle: "$userEmail • $formattedTimestamp");
                   },
                 ),
               );

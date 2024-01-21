@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:chatapp/components/my_list_tile.dart';
 import 'package:chatapp/helper/helper_function.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -45,15 +46,16 @@ class UserPage extends StatelessWidget {
               Expanded(
                 child: ListView.builder(
                     itemCount: users.length,
-                    padding: EdgeInsets.all(0),
+                    padding: EdgeInsets.only(top: 25),
                     itemBuilder: (context, index) {
                       //get individual user
                       final user = users[index];
 
-                      return ListTile(
-                        title: Text(user['username']),
-                        subtitle: Text(user['email']),
-                      );
+                      //get data from each user
+                      String username = user['username'];
+                      String email = user['email'];
+
+                      return MyListTile(title: username, subtitle: email);
                     }),
               ),
             ],

@@ -23,7 +23,7 @@ class FirestoreDatabase {
     return posts.add({
       'UserEmail': user!.email,
       'PostMessage': message,
-      'Timestamp': Timestamp.now(),
+      'TimeStamp': Timestamp.now(),
     });
   }
 
